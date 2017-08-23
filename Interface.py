@@ -11,7 +11,7 @@ import urllib.request
 
 app = Flask(__name__)
 
-connection_string = os.environ['POSTGRESQL']
+connection_string = os.environ['DATABASE_URL']
 
 def check_auth(username, password):
     '''THIS IS FOR THE USERNAME AND PASSWORD VARIABLE'''
