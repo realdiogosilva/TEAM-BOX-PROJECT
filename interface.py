@@ -55,17 +55,17 @@ def hello_world():
 @app.route('/about')
 @requires_auth
 def about():
-    return render_template("ABOUT THE PROJECT.html")
+    return render_template("about_the_project.html")
 
 @app.route('/members')
 @requires_auth
 def members():
-    return render_template('ITEMS USED.html')
+    return render_template('item_used.html')
 
 @app.route('/mainidea')
 @requires_auth
 def mainidea():
-    return render_template('OUR MAIN IDEA.html')
+    return render_template('our_main_idea.html')
 
 @app.route('/handle',methods=['POST'])
 @requires_auth
