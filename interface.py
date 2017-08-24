@@ -75,7 +75,7 @@ def handle():
     temperature = int(request.form['temperature'])
     current_date = datetime.date.today().isoformat()
 
-    query = "INSERT INTO temperature (temperature, reading_date) values (%s , %s); DELETE FROM temperature(current_date) value(%s)" % (temperature, 'current_date', 'current_date')
+    query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (\'%s\', %s)' % (current_date, temperature)
     cursor.execute(query)
 
     conn.commit()
