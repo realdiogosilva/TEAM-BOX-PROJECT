@@ -211,3 +211,7 @@ body {
     font-family: "Courier";
 
 }
+#textbox{
+    background-color: red;
+    border-color: black;
+}
