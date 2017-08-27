@@ -37,7 +37,7 @@ def requires_auth(f):
 def hello_world():
         conn = psycopg2.connect(connection_string)
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        cursor.execute("SELECT * FROM temperature ORDER BY reading_date DESC LIMIT 5")
+        cursor.execute("SELECT * FROM temperature ORDER BY date_time DESC LIMIT 5")
         records = cursor.fetchall()
 
         cursor.execute("SELECT * FROM temperature ORDER BY temperature DESC LIMIT 1 ")
