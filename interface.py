@@ -82,6 +82,18 @@ def handle():
     conn.close()
     return redirect('/form')
 
+@app.route('/deletedatabase',methods=['POST'])
+@requires_auth
+def deletedatabase():
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    query = 'DELETE FROM temperature'
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
+    return redirect('/form')
+
+
 @app.template_filter('format_date')
 def reverse_filter(record_date):
     return record_date.strftime('%Y-%m-%d %H:%M')
