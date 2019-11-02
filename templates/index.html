@@ -32,8 +32,12 @@
         color:#43a147;
         font-size:20px;
         font-family: "Courier";">{{ lowest.reading_date }}</h4>
-
 		</div>
+		<form method="post" action="/handle">
+			Temperature <input id="textbox"type="number" name="temperature"/><br>
+			<input type="submit" value="Send"/>
+		</form>
+		<form method="post" action="/deletedatabase"><input type="submit" value="DELETE"/></form>
 
 		<table>
 		<h1 class="LOGO" style="text-align: center;"> HISTORY: </h1>
