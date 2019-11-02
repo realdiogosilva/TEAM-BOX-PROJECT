@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Expenses for Harriet</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+	<body style="text-align: center;">
+		<ul>
+  <li><a  href="/form">Form</a></li>
+		  <li class="LOGOSF">Expenses App</h1></a></li>
+		</ul>
+		<h1 class="LOGO">Expenses App Project</h1>
+
+<div class="thestarter">
+	<h4 id="firstparagraph"> In the project we were thought how to control a photon with a website which can both be used online and on our phones. <br> this will allow us to have a big range of people intersted in trying our product the <b><u style="color: #f24343;"> SMART ROOM </u></b></h4>
+    <h4>THE HIGHEST expense IS:</h4>
+    <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: "Courier"; ">{{ highest.temperature }}</h4>
+        <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: "Courier";">{{ highest.reading_date }}</h4>
+
+    <h4>The lowest expense is:</h4>
+    <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: "Courier";">{{lowest.temperature}}</h4>
+        <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: "Courier";">{{ lowest.reading_date }}</h4>
+
+		</div>
+
+		<table>
+		<h1 class="LOGO" style="text-align: center;"> HISTORY: </h1>
+            <thead>
+            <th>ID</th>
+            <th>Date</th>
+			<th>Value</th>
+			<th>Location/Store</th>
+            </thead>
+            <tbody>
+            {%  for record in records %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ record.reading_date|format_date}}</td>
+                <td> {{ record.temperature}}</td>
+
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan= "2"><h1 class="LOGO" style="text-align: center;"> THERE IS NO DATA GO AWAY</h1></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+		</table>
+
+		<h4 id="signature""> Candidate Number: XXXX</h4>
+		<script
+ src="https://code.jquery.com/jquery-3.2.1.min.js"
+ integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+
+	</body>
+	</html>
