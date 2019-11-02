@@ -37,6 +37,10 @@
 			Temperature <input id="textbox"type="number" name="temperature"/><br>
 			<input type="submit" value="Send"/>
 		</form>
+		<form method="post" action="/handle">
+			Location <input id="textbox"name="location"/><br>
+			<input type="submit" value="Send"/>
+		</form>
 		<form method="post" action="/deletedatabase"><input type="submit" value="DELETE"/></form>
 
 		<table>
@@ -52,7 +56,8 @@
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ record.reading_date|format_date}}</td>
-                <td> {{ record.temperature}}</td>
+				<td> {{ record.temperature}}</td>
+				<td>{{ record.location }}</td>
 
             </tr>
             {% else %}
