@@ -67,7 +67,7 @@ def members():
 def mainidea():
     return render_template('our_main_idea.html')
 
-@app.route('/handle',methods=['POST'])
+@app.route('/',methods=['POST'])
 @requires_auth
 def handle():
     conn = psycopg2.connect(connection_string)
