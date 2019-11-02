@@ -79,7 +79,7 @@ def handle():
     cursor.execute(query)
     conn.commit()
     conn.close()
-    return redirect('/')
+    return redirect('/form')
 
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
