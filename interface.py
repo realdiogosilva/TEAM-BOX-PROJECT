@@ -74,10 +74,8 @@ def handle():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     temperature = float(request.form['temperature'])
     current_date = datetime.datetime.now()
-
     query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (\'%s\', %s)' % (current_date, temperature)
     cursor.execute(query)
-
     conn.commit()
     conn.close()
     return redirect('/')
@@ -87,12 +85,10 @@ def handle():
 def addlocation():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    location = float(request.form['location'])
+    location = str(request.form['location'])
     current_date = datetime.datetime.now()
-
-    query = 'INSERT INTO temperature (reading_date, location)  VALUES (\'%s\', %s)' % (current_date, location)
+    query = 'INSERT INTO temperature (location)  VALUES (location)
     cursor.execute(query)
-
     conn.commit()
     conn.close()
     return redirect('/')
