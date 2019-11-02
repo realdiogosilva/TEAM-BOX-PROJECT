@@ -84,7 +84,7 @@ def handle():
 
 @app.route('/addlocation',methods=['POST'])
 @requires_auth
-def handle():
+def addlocation():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     location = float(request.form['location'])
