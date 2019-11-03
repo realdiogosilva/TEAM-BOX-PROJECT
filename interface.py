@@ -33,7 +33,7 @@ def requires_auth(f):
     return decorated
 
 
-@app.route('/')
+@app.route('/home')
 def about():
     return render_template("frontpage.html")
 
