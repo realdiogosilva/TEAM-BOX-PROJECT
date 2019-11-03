@@ -6,7 +6,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #f24343;
+    background-color: #32a83e;
     opacity: 0.9;
 }
 
@@ -33,19 +33,19 @@ li a:hover:not(.active) {
     
     .logo {
         text-align: center;
-        color:#f24343;
+        color:#32a83e;
         font-size:40px;
         font-family: "Courier"; 
     }
     span {
-        border-color:  white;
+        border-color:  burlywood;
         border-style: solid;
         border-width: 2px;
-        background-color: white;
+        background-color: burlywood;
 
     }
     button.OFF {
-        background-color: Red;
+        background-color: burlywood;
         color: White;
         font-family:"Courier";
         font-size:10px;
@@ -83,7 +83,7 @@ li a:hover:not(.active) {
 }
 
 .picturetool{
-    background-color: #f24343;
+    background-color: #32a83e;
     overflow: auto;
     float: left;
     color: white;
@@ -121,11 +121,11 @@ th {
     text-align: left;
     padding: 8px;
     background-color: rgba(255,255,255,0.8);
-    color: #f24343;
+    color: #32a83e;
     font-family: "Courier"
 }
 
-tr:nth-child(even){background-color: #f24343
+tr:nth-child(even){background-color: #32a83e
 }
 
 
@@ -133,7 +133,7 @@ tr:nth-child(even){background-color: #f24343
    text-align: left;
    border-color: transparent;
         background-color:rgba(255,255,255,0.2);
-        color:#f24343;
+        color:#32a83e;
         font-size:26px;
         font-family: "Courier";  
 }
@@ -148,7 +148,7 @@ body {
 }
 .thestarter {
     background-color: rgba(255,255,255,0.7);
-    border-bottom-color:#f24343;
+    border-bottom-color:#32a83e;
     border-bottom-width: 10px;
     border-top-color: rgba(255,255,255,0.1);
     border-left-color: rgba(255,255,255,0.1);
@@ -165,7 +165,7 @@ body {
      text-align: left;
    border-color: transparent;
         background-color:rgba(255,255,255,0.1);
-        color:#f24343;
+        color:#32a83e;
         font-size:26px;
         font-family: "Courier";  
 }
@@ -173,13 +173,13 @@ body {
     text-align: left;
    border-color: transparent;
         background-color:rgba(255,255,255,0.1);
-        color:#f24343;
+        color:#32a83e;
         font-size:26px;
         font-family: "Courier"; 
 }
 #signature{
     font-family: "Courier";
-    color: #f24343;
+    color: #32a83e;
     margin-left: 900px;
     
 
@@ -205,7 +205,7 @@ body {
     color: black;
 }
 #tempstate{
-    color: #f24343; 
+    color: #32a83e; 
     background-color: rgba(255,255,255,0.1); 
     border-color: transparent;
     font-family: "Courier";
