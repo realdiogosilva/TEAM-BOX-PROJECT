@@ -39,7 +39,7 @@ def about():
 
 
 
-@app.route('/home')
+@app.route('/')
 @requires_auth
 def hello_world():
         conn = psycopg2.connect(connection_string)
@@ -70,7 +70,7 @@ def handle():
 
     conn.commit()
     conn.close()
-    return redirect('/home')
+    return redirect('/')
 
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
@@ -81,7 +81,7 @@ def deletedatabase():
     cursor.execute(query)
     conn.commit()
     conn.close()
-    return redirect('/home')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run()
