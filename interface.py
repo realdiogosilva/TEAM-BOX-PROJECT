@@ -34,6 +34,11 @@ def requires_auth(f):
 
 @app.route('/')
 @requires_auth
+def mainidea():
+    return render_template('frontpage.html')
+
+@app.route('/home')
+@requires_auth
 def hello_world():
         conn = psycopg2.connect(connection_string)
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -50,23 +55,6 @@ def hello_world():
 
         return render_template('index.html', temperature=36, records=records, highest=max, lowest=low)
 
-
-
-@app.route('/about')
-@requires_auth
-def about():
-    return render_template("about_the_project.html")
-
-@app.route('/members')
-@requires_auth
-def members():
-    return render_template('item_used.html')
-
-@app.route('/mainidea')
-@requires_auth
-def mainidea():
-    return render_template('our_main_idea.html')
-
 @app.route('/handle',methods=['POST'])
 @requires_auth
 def handle():
@@ -80,7 +68,7 @@ def handle():
 
     conn.commit()
     conn.close()
-    return redirect('/form')
+    return redirect('/home')
 
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
@@ -91,7 +79,7 @@ def deletedatabase():
     cursor.execute(query)
     conn.commit()
     conn.close()
-    return redirect('/form')
+    return redirect('/home')
 
 
 @app.template_filter('format_date')
