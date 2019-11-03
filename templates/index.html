@@ -49,6 +49,15 @@
         font-size:20px;
         font-family: Courier">{{ highest.reading_date}}</h4>
 
+<h4 style="text-align: center;
+color:black;
+font-size:20px;
+font-family: sans-serif">Location:</h4>
+<h4 style="text-align: center;
+    color:#f24343;
+    font-size:20px;
+    font-family: Courier">{{ lowest.highest }}</h4>
+
     <h4 style="text-align: center;
     color:black;
     font-size:20px;
@@ -75,9 +84,12 @@
         font-family: Courier">{{ lowest.location }}</h4>
         <form method="post" action="/handle">
             Amount <input id="textbox"type="number" name="temperature"/><br>
+            <form method="post" action="/handle">
+                Location <input id="textbox"type="text" name="location"/><br>
             <input type="submit" value="Send"/>
         </form>
         <form method="post" action="/deletedatabase"><input type="submit" value="DELETE"/></form>
+        
 		</div>
 
 		<table>
