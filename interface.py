@@ -32,13 +32,6 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-
-@app.route('/home')
-def about():
-    return render_template("frontpage.html")
-
-
-
 @app.route('/')
 @requires_auth
 def hello_world():
@@ -57,6 +50,23 @@ def hello_world():
 
         return render_template('index.html', temperature=36, records=records, highest=max, lowest=low)
 
+
+
+@app.route('/about')
+@requires_auth
+def about():
+    return render_template("about_the_project.html")
+
+@app.route('/members')
+@requires_auth
+def members():
+    return render_template('item_used.html')
+
+@app.route('/mainidea')
+@requires_auth
+def mainidea():
+    return render_template('our_main_idea.html')
+
 @app.route('/handle',methods=['POST'])
 @requires_auth
 def handle():
@@ -70,7 +80,7 @@ def handle():
 
     conn.commit()
     conn.close()
-    return redirect('/')
+    return redirect('/form')
 
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
@@ -81,7 +91,36 @@ def deletedatabase():
     cursor.execute(query)
     conn.commit()
     conn.close()
-    return redirect('/')
+    return redirect('/form')
+
+
+@app.template_filter('format_date')
+def reverse_filter(record_date):
+    return record_date.strftime('%Y-%m-%d %H:%M')
+
+@app.route('/form')
+@requires_auth
+def form():
+    return render_template('form.html')
+
+@app.route('/led', methods=['POST'])
+def led():
+    url = "https://api.particle.io/v1/devices/%s/led?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
+    arg = request.form['arg']
+    post_fields = {'arg': arg}
+    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    req = Request(url, urlencode(post_fields).encode())
+    urlopen(req, context=gcontext)
+    return arg
+
+@app.route('/ledstate')
+def ledstate():
+    url = "https://api.particle.io/v1/devices/%s/ledstate?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
+    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    return urlopen(url, context=gcontext).read()
+
+
+
 
 if __name__ == '__main__':
     app.run()
