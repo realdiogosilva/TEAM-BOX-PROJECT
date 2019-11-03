@@ -81,14 +81,14 @@ def handle():
     conn.close()
     return redirect('/form')
 
-@app.route('/location',methods=['POST'])
+@app.route('/targetlocation',methods=['POST'])
 @requires_auth
-def location():
+def targetlocation():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    location = float(request.form['location'])
+    location = float(request.form['targetlocation'])
     current_date = datetime.datetime.now()
-    query = 'INSERT INTO temperature (location)  VALUES (location)
+    query = 'INSERT INTO temperature (location)  VALUES (targetlocation)
     cursor.execute(query)
 
     conn.commit()
