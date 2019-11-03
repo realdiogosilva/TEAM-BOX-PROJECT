@@ -81,6 +81,20 @@ def handle():
     conn.close()
     return redirect('/form')
 
+@app.route('/location',methods=['POST'])
+@requires_auth
+def location():
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    location = float(request.form['location'])
+    current_date = datetime.datetime.now()
+    query = 'INSERT INTO temperature (location)  VALUES (location)
+    cursor.execute(query)
+
+    conn.commit()
+    conn.close()
+    return redirect('/form')
+
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
 def deletedatabase():
