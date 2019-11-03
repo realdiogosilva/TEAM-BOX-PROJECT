@@ -76,7 +76,6 @@ def handle():
     current_date = datetime.datetime.now()
     query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (\'%s\', %s)' % (current_date, temperature)
     cursor.execute(query)
-
     conn.commit()
     conn.close()
     return redirect('/form')
@@ -92,7 +91,6 @@ def deletedatabase():
     conn.close()
     return redirect('/form')
 
-
 @app.template_filter('format_date')
 def reverse_filter(record_date):
     return record_date.strftime('%Y-%m-%d %H:%M')
@@ -101,25 +99,6 @@ def reverse_filter(record_date):
 @requires_auth
 def form():
     return render_template('form.html')
-
-@app.route('/led', methods=['POST'])
-def led():
-    url = "https://api.particle.io/v1/devices/%s/led?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
-    arg = request.form['arg']
-    post_fields = {'arg': arg}
-    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    req = Request(url, urlencode(post_fields).encode())
-    urlopen(req, context=gcontext)
-    return arg
-
-@app.route('/ledstate')
-def ledstate():
-    url = "https://api.particle.io/v1/devices/%s/ledstate?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
-    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    return urlopen(url, context=gcontext).read()
-
-
-
 
 if __name__ == '__main__':
     app.run()
