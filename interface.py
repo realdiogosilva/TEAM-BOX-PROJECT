@@ -32,7 +32,14 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
+
 @app.route('/')
+def about():
+    return render_template("frontpage.html")
+
+
+
+@app.route('/home')
 @requires_auth
 def hello_world():
         conn = psycopg2.connect(connection_string)
@@ -50,37 +57,20 @@ def hello_world():
 
         return render_template('index.html', temperature=36, records=records, highest=max, lowest=low)
 
-
-
-@app.route('/about')
-@requires_auth
-def about():
-    return render_template("about_the_project.html")
-
-@app.route('/members')
-@requires_auth
-def members():
-    return render_template('item_used.html')
-
-@app.route('/mainidea')
-@requires_auth
-def mainidea():
-    return render_template('our_main_idea.html')
-
 @app.route('/handle',methods=['POST'])
 @requires_auth
 def handle():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    locationsss = float(request.form['locationsss'])
     temperature = float(request.form['temperature'])
-
     current_date = datetime.datetime.now()
-    query = 'INSERT INTO temperature (reading_date, locationsss, temperature)  VALUES (\'%s\', %s)' % (current_date, locationsss, temperature)
+
+    query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (\'%s\', %s)' % (current_date, temperature)
     cursor.execute(query)
+
     conn.commit()
     conn.close()
-    return redirect('/')
+    return redirect('/home')
 
 @app.route('/deletedatabase',methods=['POST'])
 @requires_auth
@@ -91,16 +81,7 @@ def deletedatabase():
     cursor.execute(query)
     conn.commit()
     conn.close()
-    return redirect('/form')
-
-@app.template_filter('format_date')
-def reverse_filter(record_date):
-    return record_date.strftime('%Y-%m-%d %H:%M')
-
-@app.route('/form')
-@requires_auth
-def form():
-    return render_template('form.html')
+    return redirect('/home')
 
 if __name__ == '__main__':
     app.run()

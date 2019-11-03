@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Personal Expense </title>
+        <link rel="shortcut icon" href="../static/favicon.ico" />
+        <link rel="shortcut icon" sizes="114x114" href="../static/favicon.ico" />
+        <link rel="shortcut icon" sizes="72x72" href="../static/favicon.ico" />
+
+
+		<link rel="stylesheet" href="static/style.css">
+	</head>
+	<body style="text-align: center;">
+	
+		<img src="logo.png" style="height: 100px;">
+<div class="thestarter">
+    <h2 style="text-align: center;
+    color:#f24343;
+    font-size:30px;
+    font-family: Courier">How It Works:</h2>
+
+		<h4 style="text-align: center;
+        color:black;
+        font-size:15px;
+        font-family:sans-serif">
+            Dear client, Welcome to your Personal Expense App</h4>
+            <div class="popup" onclick="myFunction()" style="text-align: center;
+            color: green;
+            font-size:20px;
+            font-family: sans-serif">Get Started
+                    <span class="popuptext" id="myPopup" style="text-align: center;
+                    color:white;
+                    font-size:15px;
+                    font-family: 'Gill Sans'">To get started just add an amount and the location, date will be generated automicatlly</span>
+                  </div>
+    <h4 style="text-align: center;
+    color: black;
+    font-size:20px;
+    font-family: sans-serif">The highest spending is:</h4>
+    <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: Courier">{{ highest.temperature }}</h4>
+     <h4  style="text-align: center;
+     color:black;
+     font-size:20px;
+     font-family: sans-serif">Date</h4>
+
+        <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: Courier">{{ highest.reading_date}}</h4>
+
+    <h4 style="text-align: center;
+    color:black;
+    font-size:20px;
+    font-family: sans-serif">The lowest spending is:</h4>
+    <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family:Courier">{{lowest.temperature}}</h4>
+    <h4 style="text-align: center;
+    color:black;
+    font-size:20px;
+    font-family: sans-serif">Date:</h4>
+        <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: Courier">{{ lowest.reading_date }}</h4>
+    <h4 style="text-align: center;
+    color:black;
+    font-size:20px;
+    font-family: sans-serif">Location:</h4>
+    <h4 style="text-align: center;
+        color:#f24343;
+        font-size:20px;
+        font-family: Courier">{{ lowest.location }}</h4>
+        <form method="post" action="/handle" style="font-family:sans-serif; text-align: center;">
+            Amount <input id="textbox"type="number" style="font-family:sans-serif;" name="temperature"/><br>
+            <input type="submit" value="Send"/>
+        </form>
+        <form method="post" action="/deletedatabase"><input type="submit" value="DELETE"/></form>
+		</div>
+
+		<table>
+		<h1 class="LOGO" style="text-align: center;"> New Transactions: </h1>
+            <thead>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Location</th>
+            </thead>
+            <tbody>
+            {%  for record in records %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ record.reading_date|format_date}}</td>
+                <td> {{ record.temperature}}</td>
+                <td>{{ record.location}} </td>
+
+
+            </tr>
+            {% else %}
+            <tr>
+            </tr>
+            {% endfor %}
+            </tbody>
+		</table>
+
+		<h4 id="signature"> Candidate Number: XXXXX</h4>
+	</body>
+    </html>
+    <script>
+            // When the user clicks on <div>, open the popup
+            function myFunction() {
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+            }
+            </script>
