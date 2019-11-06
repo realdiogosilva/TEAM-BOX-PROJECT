@@ -38,7 +38,7 @@
     <h4 style="text-align: center;
         color:#f24343;
         font-size:20px;
-        font-family: Courier">{{ highest.temperature }}</h4>
+        font-family: Courier">{{ highest.amount }}</h4>
      <h4  style="text-align: center;
      color:black;
      font-size:20px;
@@ -65,7 +65,7 @@ font-family: sans-serif">Location:</h4>
     <h4 style="text-align: center;
         color:#f24343;
         font-size:20px;
-        font-family:Courier">{{lowest.temperature}}</h4>
+        font-family:Courier">{{lowest.amount}}</h4>
     <h4 style="text-align: center;
     color:black;
     font-size:20px;
@@ -83,7 +83,7 @@ font-family: sans-serif">Location:</h4>
         font-size:20px;
         font-family: Courier">{{ lowest.location }}</h4>
         <form method="post" action="/handle">
-            Amount <input id="textbox"type="number" name="temperature"/><br>
+            Amount <input id="textbox"type="number" name="amount"/><br>
             <form method="post" action="/handle">
                 Location <input id="textbox"type="text" name="location"/><br>
             <input type="submit" value="Send"/>
@@ -105,10 +105,8 @@ font-family: sans-serif">Location:</h4>
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ record.reading_date|format_date}}</td>
-                <td> {{ record.temperature}}</td>
+                <td> {{ record.amount}}</td>
                 <td>{{ record.location}} </td>
-
-
             </tr>
             {% else %}
             <tr>
