@@ -81,7 +81,7 @@ font-family: sans-serif">Location:</h4>
     <h4 style="text-align: center;
         color:#f24343;
         font-size:20px;
-        font-family: Courier">{{ lowest.location }}</h4>
+        font-family: Courier">{{ lowest.locations }}</h4>
         <form method="post" action="/handle">
             Amount <input id="textbox"type="number" name="amount"/><br>
             <form method="post" action="/handle">
@@ -106,7 +106,7 @@ font-family: sans-serif">Location:</h4>
                 <td>{{ loop.index }}</td>
                 <td>{{ record.reading_date|format_date}}</td>
                 <td> {{ record.famount}}</td>
-                <td>{{ record.location}} </td>
+                <td>{{ record.locations}} </td>
             </tr>
             {% else %}
             <tr>
