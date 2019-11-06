@@ -87,10 +87,5 @@ def deletedatabase():
 def reverse_filter(record_date):
     return record_date.strftime('%Y-%m-%d %H:%M')
 
-@app.route('/form')
-@requires_auth
-def form():
-    return render_template('form.html')
-
 if __name__ == '__main__':
     app.run()
