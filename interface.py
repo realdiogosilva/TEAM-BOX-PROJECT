@@ -61,7 +61,7 @@ def handle():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     temperature = float(request.form['temperature'])
     current_date = datetime.datetime.now()
-    query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (\%s\, %s) % (current_date, temperature)'
+    query = 'INSERT INTO temperature (reading_date, temperature)  VALUES (current_date, temperature)'
     cursor.execute(query)
 
     conn.commit()
@@ -88,25 +88,6 @@ def reverse_filter(record_date):
 @requires_auth
 def form():
     return render_template('form.html')
-
-@app.route('/led', methods=['POST'])
-def led():
-    url = "https://api.particle.io/v1/devices/%s/led?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
-    arg = request.form['arg']
-    post_fields = {'arg': arg}
-    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    req = Request(url, urlencode(post_fields).encode())
-    urlopen(req, context=gcontext)
-    return arg
-
-@app.route('/ledstate')
-def ledstate():
-    url = "https://api.particle.io/v1/devices/%s/ledstate?access_token=%s" % (os.environ['DEVICE_ID'], os.environ['ACCESS_TOKEN'])
-    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    return urlopen(url, context=gcontext).read()
-
-
-
 
 if __name__ == '__main__':
     app.run()
