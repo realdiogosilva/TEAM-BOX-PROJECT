@@ -74,7 +74,9 @@ def handle():
 def deletedatabase():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    query = 'DELETE FROM temperature'
+    amount = float(request.form['amount'])
+    query = 'DELETE FROM temperature WHERE famount = %s'
+    val = (amount)
     cursor.execute(query)
     conn.commit()
     conn.close()
