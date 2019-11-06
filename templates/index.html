@@ -83,7 +83,7 @@ font-family: sans-serif">Location:</h4>
         font-size:20px;
         font-family: Courier">{{ lowest.locations }}</h4>
         <form method="post" action="/handle">
-            Amount <input id="textbox"type="number" name="amount"/><br>
+            Amount <input id="textbox"type="number" step="0.01" name="amount"/><br>
             <form method="post" action="/handle">
                 Location <input id="textbox"type="text" name="location"/><br>
             <input type="submit" value="Send"/>
@@ -116,7 +116,29 @@ font-family: sans-serif">Location:</h4>
             </tr>
             {% endfor %}
             </tbody>
-		</table>
+        </table>
+        
+        <table>
+            <h1 class="LOGO" style="text-align: center;"> Weekly Spending: </h1>
+                <thead>
+                <th>Day of the Week:</th>
+                <th> Total Amount</th>
+                </thead>
+                <tbody>
+                {%  for record in records %}
+                <tr>
+                    <td>Monday</td>
+                    <td> {{ record.famount}}</td>
+                </tr>
+                <tr>
+
+                </tr>
+                {% else %}
+                <tr>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
 		<h4 id="signature"> Candidate Number: XXXXX</h4>
 	</body>
