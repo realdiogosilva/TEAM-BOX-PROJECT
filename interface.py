@@ -62,8 +62,9 @@ def handle():
     amount = float(request.form['amount'])
     location = str(request.form['location'])
     current_date = datetime.datetime.now()
-    query = "INSERT INTO temperature(famount, reading_date, locations) VALUES (%s, %s, %s)"
-    val = (amount, current_date, location)
+    weekdays = datetime.datetime.now().strftime('%A')
+    query = "INSERT INTO temperature(famount, reading_date, locations, weekday) VALUES (%s, %s, %s, %s)"
+    val = (amount, current_date, location, weekdays)
     cursor.execute(query, val)
     conn.commit()
     conn.close()
