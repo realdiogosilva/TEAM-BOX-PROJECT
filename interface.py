@@ -59,11 +59,10 @@ def hello_world():
 def handle():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    temperature = float(request.form['temperature'])
+    amount = float(request.form['amount'])
     current_date = datetime.datetime.now()
-    query = 'INSERT INTO temperature (reading_date, temperature) VALUES (current_date, temperature)'
+    query = 'INSERT INTO temperature (reading_date, amount) VALUES (current_date, amount)'
     cursor.execute(query)
-
     conn.commit()
     conn.close()
     return redirect('/home')
