@@ -85,7 +85,7 @@ def deletedatabase():
 
 @app.template_filter('format_date')
 def reverse_filter(record_date):
-    return record_date.strftime('%A %d-%m-%Y %H:%M')
+    return record_date.strftime('%A %d/%m')
 
 if __name__ == '__main__':
     app.run()
