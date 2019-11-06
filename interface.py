@@ -61,8 +61,9 @@ def handle():
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     amount = float(request.form['amount'])
     current_date = datetime.datetime.now()
-    query = "INSERT INTO temperature (famount, reading_date) VALUES (amount, current_date)"
-    cursor.execute(query)
+    query = "INSERT INTO temperature(famount, reading_date) VALUES (%s, %s)"
+    val = (amount, current_date)
+    cursor.execute(query, val)
     conn.commit()
     conn.close()
     return redirect('/home')
