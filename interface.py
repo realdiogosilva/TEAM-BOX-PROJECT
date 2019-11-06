@@ -75,9 +75,8 @@ def deletedatabase():
     conn = psycopg2.connect(connection_string)
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     amount = float(request.form['amount'])
-    query = 'DELETE FROM temperature WHERE famount = %s'
-    val = (amount)
-    cursor.execute(query, val)
+    query = 'DELETE FROM temperature WHERE famount=?',(amount,)
+    cursor.execute(query)
     conn.commit()
     conn.close()
     return redirect('/home')
