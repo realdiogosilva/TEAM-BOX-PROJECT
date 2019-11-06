@@ -77,7 +77,7 @@ def deletedatabase():
     amount = float(request.form['amount'])
     query = 'DELETE FROM temperature WHERE famount = %s'
     val = (amount)
-    cursor.execute(query)
+    cursor.execute(query, val)
     conn.commit()
     conn.close()
     return redirect('/home')
