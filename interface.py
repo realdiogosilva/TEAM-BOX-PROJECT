@@ -91,5 +91,6 @@ def reverse_filter(record_date):
 if __name__ == '__main__':
     app.run()
 
-print ("Hello")
+querys = "SELECT SUM(famount) AS Total FROM temperature WHERE weekday = Tuesday;"
+print (querys)
 
