@@ -64,6 +64,8 @@ def handle():
     current_date = datetime.datetime.now()
     weekdays = datetime.datetime.now().strftime('%A')
     query = "INSERT INTO temperature(famount, reading_date, locations, weekday) VALUES (%s, %s, %s, %s)"
+    querys = "SELECT SUM(famount) AS Total FROM temperature WHERE weekday = Tuesday;"
+    print (querys)
     val = (amount, current_date, location, weekdays)
     cursor.execute(query, val)
     conn.commit()
@@ -90,3 +92,4 @@ def reverse_filter(record_date):
 
 if __name__ == '__main__':
     app.run()
+

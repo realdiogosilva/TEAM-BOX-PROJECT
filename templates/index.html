@@ -90,7 +90,7 @@ font-family: sans-serif">Location:</h4>
         </form>
         <form method="post" action="/deletedatabase">
             Amount <input id="textbox"type="number" name="amount"/><br>
-        <form method="post" action="/deletedatabase"><input type="submit" value="Delete"/></form>
+        <form method="post"></form><input type="submit" value="Delete"/></form>
        
         
 		</div>
@@ -117,50 +117,42 @@ font-family: sans-serif">Location:</h4>
             {% endfor %}
             </tbody>
         </table>
+        <Table>
+            <h1 class="LOGO" style="text-align: center;"> Total Transactions: </h1>
+            <thead> 
+            <th>Weekday</th>
+            <th>Amount</th>
+            <tbody> 
+            <tr> 
+                <td>Monday</td>
+                <td>56</td>
+            </tr>    
+            <tr> 
+                <td>Tuesday</td>
+                <td>12</td>
+            </tr>  
+            <tr> 
+                <td>Wednesday</td>
+                <td>58.7</td>
+            </tr>    
+            <tr> 
+                <td>Thursday</td>
+                <td>0</td>
+            </tr>    
+            <tr> 
+                <td>Friday</td>
+                <td>56</td>
+            </tr>    
+            <tr> 
+                <td>Saturday</td>
+                <td>433</td>
+            </tr>    
+            <tr> 
+                <td>Sunday</td>
+                <td>0</td>
+            </tr>    
+        </Table>
         
-        <table>
-            <h1 class="LOGO" style="text-align: center;"> Weekly Spending: </h1>
-                <thead>
-                <th>Day of the Week:</th>
-                <th> Total Amount</th>
-                </thead>
-                <tbody>
-                {%  for record in records %}
-                <tr>
-                    <td>Monday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Saturday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                <tr>
-                    <td>Sunday</td>
-                    <td> {{ record.famount}}</td>
-                </tr>
-                {% else %}
-                <tr>
-                </tr>
-                {% endfor %}
-              
-                </tbody>
-            </table>
 
 		<h4 id="signature"> Candidate Number: XXXXX</h4>
 	</body>
