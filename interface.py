@@ -39,11 +39,6 @@ def mainidea():
 @app.route('/home')
 @requires_auth
 def hello_world():
-        return render_template('index.html')
-
-
-@app.route('/daprs202_gradessummary')
-@requires_auth
-def hello_world():
         return render_template('grades.html')
+
 
