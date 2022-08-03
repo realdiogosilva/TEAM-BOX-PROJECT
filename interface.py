@@ -36,7 +36,7 @@ def requires_auth(f):
 def mainidea():
     return render_template('frontpage.html')
 
-@app.route('/home')
+@app.route('/daprs202grades')
 @requires_auth
 def hello_world():
         return render_template('grades.html')
