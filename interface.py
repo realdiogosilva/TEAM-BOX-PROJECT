@@ -11,6 +11,8 @@ import urllib.request
 
 app = Flask(__name__)
 
+connection_string = os.environ['DATABASE_URL']
+
 def check_auth(username, password):
     '''THIS IS FOR THE USERNAME AND PASSWORD VARIABLE'''
     return username == os.environ['USERNAME']; password == os.environ['PASSWORD'];
@@ -38,5 +40,3 @@ def mainidea():
 @requires_auth
 def hello_world():
         return render_template('grades.html')
-
-
